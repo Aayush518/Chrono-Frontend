@@ -35,7 +35,8 @@ const ModelImage = () => {
           {/* Watch Image */}
           <div className="relative aspect-[3/4]">
             <motion.img
-              src="https://images.unsplash.com/photo-1594534475808-b18fc33b045e?auto=format&fit=crop&w=800&q=80"
+              src="/model3.webp"
+              // https://images.unsplash.com/photo-1594534475808-b18fc33b045e?auto=format&fit=crop&w=800&q=80
               alt="Luxury black watch"
               className="w-full h-full object-cover"
               whileHover={{ scale: 1.05 }}

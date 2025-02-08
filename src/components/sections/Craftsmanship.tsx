@@ -18,7 +18,7 @@ const craftsmanshipDetails = [
   {
     title: "Heritage",
     description: "Five generations of watchmaking expertise, preserving traditional craftsmanship.",
-    image: "https://images.unsplash.com/photo-1622434641406-a158123450f9?auto=format&fit=crop&w=1600&q=80",
+    image: "/watch.webp",
     accent: "from-purple-500/20 to-blue-500/20"
   },
   {
