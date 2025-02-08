@@ -3,20 +3,28 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    color-scheme: dark;
+  }
+
   html {
     scroll-behavior: smooth;
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     -webkit-tap-highlight-color: transparent;
   }
 
   body {
     @apply antialiased bg-black text-white;
     height: 100%;
+    will-change: transform;
   }
 
-  /* Custom Scrollbar */
+  /* Optimized Scrollbar */
   ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
@@ -24,15 +32,39 @@
 
   ::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
   }
 
   ::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 2px;
+    transition: background-color 0.2s ease;
   }
 
   ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* Performance Optimizations */
+  * {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  img {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+
+  /* Smooth Image Loading */
+  img.loading {
+    filter: blur(10px);
+    clip-path: inset(0);
+  }
+
+  img.loaded {
+    filter: blur(0);
+    transition: filter 0.5s linear;
   }
 
   /* Mobile Optimizations */
@@ -41,77 +73,70 @@
       width: 2px;
       height: 2px;
     }
+
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
   }
 }
 
 @layer utilities {
   .container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    margin-left: auto;
+    margin-right: auto;
+    will-change: transform;
   }
 
-  /* Responsive Container Padding */
-  @media (max-width: 640px) {
-    .container {
-      @apply px-4;
-    }
+  /* Hardware Acceleration Classes */
+  .gpu {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+    will-change: transform;
   }
 
-  @media (min-width: 641px) and (max-width: 1024px) {
-    .container {
-      @apply px-6;
-    }
+  .gpu-text {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Optimized Animation Classes */
+  .animate-gpu {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+
+  .transition-gpu {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+  }
+
+  /* Smooth Scroll Snap */
+  .scroll-snap-y {
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+
+  .scroll-snap-start {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 }
 
-/* Smooth Scroll Snap */
-.scroll-snap-y {
-  scroll-snap-type: y mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-.scroll-snap-start {
-  scroll-snap-align: start;
-}
-
-/* Enhanced Animation Classes */
+/* Enhanced Animation Performance */
 .animate-float {
   animation: float 6s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes float {
   0%, 100% {
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0);
   }
   50% {
-    transform: translateY(-20px);
-  }
-}
-
-/* Parallax Container */
-.parallax-container {
-  perspective: 1000px;
-  transform-style: preserve-3d;
-}
-
-/* Mobile-First Media Queries */
-@media (max-width: 640px) {
-  .text-responsive {
-    font-size: clamp(1rem, 4vw, 1.5rem);
-  }
-
-  .heading-responsive {
-    font-size: clamp(2rem, 8vw, 4rem);
-  }
-}
-
-/* Tablet Media Queries */
-@media (min-width: 641px) and (max-width: 1024px) {
-  .text-responsive {
-    font-size: clamp(1.25rem, 3vw, 1.75rem);
-  }
-
-  .heading-responsive {
-    font-size: clamp(3rem, 6vw, 5rem);
+    transform: translateY(-20px) translateZ(0);
   }
 }
 
@@ -126,7 +151,7 @@
   }
 }
 
-/* Reduced Motion Preferences */
+/* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
