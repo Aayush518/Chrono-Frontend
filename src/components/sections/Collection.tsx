@@ -121,33 +121,33 @@ const Collection = () => {
           
           <div className="relative -mx-4 md:mx-0 overflow-hidden">
             <div className="relative px-4 md:px-0">
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.2 }}
-                className="text-[15vw] md:text-7xl font-light tracking-wider text-white mb-8 md:mb-12 whitespace-nowrap overflow-visible relative"
-                style={{
-                  textShadow: '0 0 40px rgba(255,255,255,0.2)',
-                  transform: 'translateX(-5%)'
-                }}
-              >
-                Dark Elegance
-                <motion.div
-                  className="absolute inset-0 pointer-events-none"
-                  animate={{
-                    background: [
-                      'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
-                      'linear-gradient(90deg, transparent, rgba(255,255,255,0), transparent)',
-                    ]
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatType: "reverse"
-                  }}
-                />
-              </motion.h2>
+<motion.h2 
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 1.2 }}
+  className="text-[12vw] sm:text-[15vw] md:text-7xl font-light tracking-wider text-white mb-8 md:mb-12 whitespace-normal sm:whitespace-nowrap overflow-visible relative px-4 sm:px-0"
+  style={{
+    textShadow: '0 0 40px rgba(255,255,255,0.2)',
+    transform: 'translateX(-5%)'
+  }}
+>
+  Dark Elegance
+  <motion.div
+    className="absolute inset-0 pointer-events-none"
+    animate={{
+      background: [
+        'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
+        'linear-gradient(90deg, transparent, rgba(255,255,255,0), transparent)',
+      ]
+    }}
+    transition={{
+      duration: 2,
+      repeat: Infinity,
+      repeatType: "reverse"
+    }}
+  />
+</motion.h2>
             </div>
           </div>
           

@@ -73,7 +73,7 @@ const Craftsmanship = () => {
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.2 }}
-                className="text-[18vw] md:text-8xl font-light tracking-wider text-white mb-8 md:mb-12 whitespace-nowrap overflow-visible relative"
+                className="text-[10vw] md:text-8xl font-light tracking-wider text-white mb-8 md:mb-12 whitespace-nowrap overflow-visible relative"
                 style={{
                   textShadow: '0 0 40px rgba(255,255,255,0.2)',
                   transform: 'translateX(-5%)'
